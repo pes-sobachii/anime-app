@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import SearchPageItem from "./SearchPageItem";
 import './SearchPage.css'
 
@@ -6,11 +6,9 @@ const SearchPage = () => {
 
     const [searchResult, setSearchResult] = useState([])
     const [inputValue, setInputValue] = useState('')
-    let submitted = false
 
     const getAnimeByQuery = async () => {
         const temp = await fetch(`https://api.jikan.moe/v4/anime?page=1&q=${inputValue}`).then((res) => res.json())
-        submitted = false
         setSearchResult(temp.data)
     }
 
