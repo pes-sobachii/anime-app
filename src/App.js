@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from "./Components/Header/Header";
+import {HashRouter, Route, Routes} from "react-router-dom";
+import AnimeList from "./Components/AnimeList/AnimeList.js";
+import MangaList from "./Components/MangaList/MangaList.js";
+import SearchPage from "./Components/SearchPage/SearchPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <HashRouter>
+            <div className="App">
+                <Header/>
+                <Routes>
+                    <Route path="/" element={<SearchPage/>}/>
+                    <Route path="/top_anime" element={<AnimeList anime={topAnime}/>}/>
+                    <Route path="/top_manga" element={<MangaList manga={topManga}/>}/>
+                </Routes>
+            </div>
+
+        </HashRouter>
+
+    );
 }
 
 export default App;
